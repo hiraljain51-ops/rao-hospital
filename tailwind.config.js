@@ -7,27 +7,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        purple: {
-          DEFAULT: '#776492',
-          light: '#9b84b0',
-          dark: '#5a4d6f',
-          50: '#f4f1f7',
-          100: '#e8e1f0',
+        brand: {
+          purple: '#776492',
+          pink:   '#f26b77',
+          gray:   '#d9d9d9',
+          text:   '#545454',
         },
-        pink: {
-          DEFAULT: '#f26b77',
-          light: '#f5909a',
-          50: '#fef2f3',
-        },
-        gray: {
-          light: '#d9d9d9',
-          mid: '#545454',
-          soft: '#f8f7fa',
-        }
       },
       fontFamily: {
-        playfair: ['"Playfair Display"', 'serif'],
-        outfit: ['Outfit', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'Georgia', 'serif'],
+        outfit:   ['Outfit', 'system-ui', 'sans-serif'],
+      },
+      keyframes: {
+        marquee: {
+          '0%':   { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 22s linear infinite',
       },
     },
   },

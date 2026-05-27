@@ -1,160 +1,151 @@
 # Rao Hospital — Mobile Landing Page
 
-A production-ready mobile landing page for Rao Hospital built with React, Tailwind CSS, Framer Motion, and Swiper.js.
+A production-ready, mobile-only landing page for Rao Hospital built with
+**React + Vite · Tailwind CSS · Framer Motion · Swiper.js**
 
 ---
 
-## 🚀 Run Locally
+## Project Structure
 
-### Prerequisites
-- Node.js 18+ installed
-- npm or yarn
+```
+rao-hospital/
+├── src/
+│   ├── assets/               ← Drop real doctor photos here
+│   ├── components/
+│   │   ├── Navbar.jsx        ← Sticky header + slide-in mobile drawer
+│   │   ├── Hero.jsx          ← Hero section with stats strip
+│   │   ├── CredibilityStrip.jsx  ← Infinite purple marquee
+│   │   ├── Specialities.jsx  ← Animated stacked speciality cards
+│   │   ├── WhyTrust.jsx      ← Why families trust section
+│   │   ├── Doctors.jsx       ← Swipeable doctor carousel (14 cards)
+│   │   ├── Testimonials.jsx  ← Swipeable testimonial carousel
+│   │   ├── FAQ.jsx           ← Animated accordion FAQ
+│   │   ├── FinalCTA.jsx      ← Dark gradient CTA section
+│   │   ├── Footer.jsx        ← Dark footer
+│   │   └── StickyButton.jsx  ← Persistent bottom CTA button
+│   ├── data/
+│   │   ├── doctors.js        ← All 14 doctor records (edit here)
+│   │   └── index.js          ← All other content arrays (edit here)
+│   ├── App.jsx               ← Root layout — all sections assembled
+│   ├── main.jsx              ← React entry point
+│   └── index.css             ← Tailwind + global styles
+├── index.html
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+└── README.md
+```
+
+---
+
+## Run Locally
+
+### Requirements
+- **Node.js 18 or later** — download from https://nodejs.org
 
 ### Steps
 
 ```bash
-# 1. Navigate to the project
+# 1. Enter the project folder
 cd rao-hospital
 
 # 2. Install dependencies
 npm install
 
-# 3. Start development server
+# 3. Start dev server
 npm run dev
 
-# 4. Open in browser
-# http://localhost:5173
-# Use Chrome DevTools → Toggle Device → iPhone 14 (or any mobile)
+# 4. Open in Chrome at http://localhost:5173
+#    Use DevTools → Device Toolbar → iPhone 14 to preview as mobile
 ```
 
 ---
 
-## 🌐 Deploy on Vercel
+## Deploy to Vercel (recommended)
 
-### Option A — Vercel CLI (Fastest)
+### Option A — Vercel CLI (fastest)
+
 ```bash
-# Install Vercel CLI
-npm install -g vercel
-
-# Deploy from project root
-vercel
-
-# Follow prompts — select defaults
-# Your site will be live at: https://your-project.vercel.app
+npm install -g vercel    # install once globally
+vercel                   # run from inside rao-hospital/
+# accept all defaults → your site is live in ~60 seconds
 ```
 
-### Option B — Vercel Dashboard
+### Option B — GitHub + Vercel Dashboard
+
 1. Push this folder to a GitHub repository
-2. Go to [vercel.com](https://vercel.com) and sign in
-3. Click **"New Project"** → Import your GitHub repo
-4. Framework preset: **Vite**
-5. Click **Deploy**
+2. Go to https://vercel.com → "New Project"
+3. Import the repo
+4. Framework preset: **Vite** (auto-detected)
+5. Click **Deploy** — done
 
 ---
 
-## ✏️ How to Edit Content
+## Edit Content
 
-All content lives in two places:
-
-### 1. `src/data/index.js`
-Edit these arrays to update content:
+### Change doctor cards
+Open `src/data/doctors.js` and edit any field:
 
 ```js
-// Update specialities
-export const specialities = [ ... ]
-
-// Update why trust cards
-export const trustReasons = [ ... ]
-
-// Update testimonials
-export const testimonials = [ ... ]
-
-// Update FAQ questions and answers
-export const faqs = [ ... ]
-
-// Update credibility strip items
-export const credibilityItems = [ ... ]
+{
+  id: 1,
+  name: 'Dr. Asha Rao',
+  qualification: 'MS, FRCOG',
+  experience: '30+ Years',
+  speciality: 'Chief Consultant — Fertility, Obstetrics & Gynaecology',
+  image: 'https://...',           // URL or local import
+  bgClass: 'card-bg-lavender',   // card-bg-lavender | card-bg-mint | card-bg-sky | card-bg-blush
+},
 ```
 
-### 2. `src/data/doctors.js`
-Edit this array to update doctor cards:
+To use a **local photo**:
+1. Drop the image file into `src/assets/` (e.g. `dr-asha.jpg`)
+2. At the top of `doctors.js` add:
+   ```js
+   import drAsha from '../assets/dr-asha.jpg'
+   ```
+3. Set `image: drAsha` for that doctor
 
-```js
-export const doctors = [
-  {
-    id: 1,
-    name: "Dr. Asha Rao",          // Doctor name
-    qualification: "MS, FRCOG",     // Qualification
-    experience: "30+ Years",         // Experience
-    speciality: "Chief Consultant — Fertility, Obstetrics & Gynaecology",
-    image: "https://...",            // Replace with real photo URL
-    bgClass: "doctor-card-bg-1",    // bg-1 to bg-4 for different card colors
-  },
-  // Add more doctors here...
-]
-```
+### Change specialities, FAQs, testimonials, or trust cards
+Open `src/data/index.js` and edit the relevant exported array.
 
-### 3. Replace Doctor Images
-- Add images to `src/assets/` folder (e.g. `dr-asha-rao.jpg`)
-- Update the `image` field in `src/data/doctors.js`:
-  ```js
-  import drAshaRao from "../assets/dr-asha-rao.jpg";
-  // ...
-  image: drAshaRao,
-  ```
+### Change hero text, headline, CTA
+Open `src/components/Hero.jsx` and edit the inline text strings.
 
-### 4. Update Hero Text
-Edit `src/components/Hero.jsx`:
-- Change headline, subheadline, CTA text, stats
-
-### 5. Update Contact Details
-Edit `src/components/Footer.jsx`:
-- Phone, email, address
+### Change contact details (phone, address, email)
+Open `src/components/Footer.jsx`.
 
 ---
 
-## 📁 Project Structure
+## Colour Reference
 
-```
-rao-hospital/
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx          ← Navigation + mobile drawer
-│   │   ├── Hero.jsx            ← Hero section
-│   │   ├── CredibilityStrip.jsx ← Purple marquee strip
-│   │   ├── Specialities.jsx    ← Specialities cards
-│   │   ├── WhyTrust.jsx        ← Why trust cards
-│   │   ├── Doctors.jsx         ← Swipeable doctor carousel
-│   │   ├── Testimonials.jsx    ← Swipeable testimonial carousel
-│   │   ├── FAQ.jsx             ← Accordion FAQ
-│   │   ├── FinalCTA.jsx        ← Dark CTA section
-│   │   ├── Footer.jsx          ← Footer
-│   │   └── StickyButton.jsx    ← Always-visible bottom CTA
-│   ├── data/
-│   │   ├── index.js            ← Specialities, FAQs, Testimonials, Trust
-│   │   └── doctors.js          ← Doctor cards data
-│   ├── App.jsx                 ← Root component
-│   ├── main.jsx                ← Entry point
-│   └── index.css               ← Global styles + Tailwind
-├── index.html
-├── tailwind.config.js
-├── vite.config.js
-└── package.json
-```
-
----
-
-## 🎨 Color Reference
-
-| Token | Hex | Usage |
-|-------|-----|-------|
+| Token | Hex | Used for |
+|-------|-----|----------|
 | Purple | `#776492` | Primary brand, buttons, accents |
-| Pink | `#f26b77` | Italic headlines, stars, highlights |
-| Gray Light | `#d9d9d9` | Borders, dividers |
+| Pink | `#f26b77` | Italic headlines, star ratings |
+| Gray light | `#d9d9d9` | Borders, dividers |
+| Gray text | `#545454` | Body copy |
 | White | `#ffffff` | Backgrounds, cards |
-| Gray Mid | `#545454` | Body text |
 
-## 🔤 Fonts
+## Typography
 
-- **Playfair Display** — Headings, hero, italic emphasis
-- **Outfit** — Body copy, buttons, labels, captions
+| Font | Usage |
+|------|-------|
+| **Playfair Display** | All headings, hero headline, italic emphasis |
+| **Outfit** | Body copy, buttons, labels, captions |
+
+---
+
+## Build for production
+
+```bash
+npm run build
+# Output is in /dist — upload to any static host
+```
+
+## Preview production build locally
+
+```bash
+npm run preview
+```

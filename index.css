@@ -2,86 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --purple: #776492;
-  --purple-light: #9b84b0;
-  --purple-dark: #5a4d6f;
-  --pink: #f26b77;
-  --pink-light: #f5909a;
-  --gray-light: #d9d9d9;
-  --gray-mid: #545454;
-  --white: #ffffff;
-}
+/* ── Google Fonts fallback already loaded via index.html ── */
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ── Reset & base ── */
+*, *::before, *::after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', system-ui, sans-serif;
   background-color: #ffffff;
   color: #545454;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Centre the mobile layout on wide screens */
   max-width: 480px;
   margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
 }
 
-/* Scrollbar hidden */
-::-webkit-scrollbar {
-  display: none;
-}
+/* ── Hide scrollbar ── */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
 
-/* Marquee animation */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 20s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-/* Swiper custom */
+/* ── Swiper overrides ── */
 .swiper-button-prev,
-.swiper-button-next {
-  display: none !important;
-}
+.swiper-button-next { display: none !important; }
 
-/* Accordion */
-.accordion-content {
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* ── Doctor card pastel backgrounds ── */
+.card-bg-lavender  { background: linear-gradient(145deg, #ede8f3 0%, #f8f5fc 100%); }
+.card-bg-mint      { background: linear-gradient(145deg, #e6f4ef 0%, #f4fbf7 100%); }
+.card-bg-sky       { background: linear-gradient(145deg, #e6eef7 0%, #f4f7fb 100%); }
+.card-bg-blush     { background: linear-gradient(145deg, #f5e8ec 0%, #fbf4f6 100%); }
 
-/* Doctor card gradient bg */
-.doctor-card-bg-1 { background: linear-gradient(145deg, #ede8f3 0%, #f7f4fb 100%); }
-.doctor-card-bg-2 { background: linear-gradient(145deg, #e8f3ed 0%, #f4fbf7 100%); }
-.doctor-card-bg-3 { background: linear-gradient(145deg, #e8eef3 0%, #f4f7fb 100%); }
-.doctor-card-bg-4 { background: linear-gradient(145deg, #f3e8ed 0%, #fbf4f7 100%); }
+/* ── Sticky CTA shadow ── */
+.sticky-cta-shadow { box-shadow: 0 -4px 24px rgba(119, 100, 146, 0.13); }
 
-/* Logo text */
-.logo-text {
-  font-family: 'Playfair Display', serif;
-}
-
-/* Sticky button shadow */
-.sticky-btn-shadow {
-  box-shadow: 0 -4px 20px rgba(119, 100, 146, 0.15);
-}
-
-/* Smooth tap highlight removal */
-a, button {
-  -webkit-tap-highlight-color: transparent;
+/* ── Section divider ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #eeeeee 20%, #eeeeee 80%, transparent);
 }
