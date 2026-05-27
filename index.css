@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --purple: #776492;
+  --purple-light: #9b84b0;
+  --purple-dark: #5a4d6f;
+  --pink: #f26b77;
+  --pink-light: #f5909a;
+  --gray-light: #d9d9d9;
+  --gray-mid: #545454;
+  --white: #ffffff;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #ffffff;
+  color: #545454;
+  overflow-x: hidden;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Scrollbar hidden */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Swiper custom */
+.swiper-button-prev,
+.swiper-button-next {
+  display: none !important;
+}
+
+/* Accordion */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Doctor card gradient bg */
+.doctor-card-bg-1 { background: linear-gradient(145deg, #ede8f3 0%, #f7f4fb 100%); }
+.doctor-card-bg-2 { background: linear-gradient(145deg, #e8f3ed 0%, #f4fbf7 100%); }
+.doctor-card-bg-3 { background: linear-gradient(145deg, #e8eef3 0%, #f4f7fb 100%); }
+.doctor-card-bg-4 { background: linear-gradient(145deg, #f3e8ed 0%, #fbf4f7 100%); }
+
+/* Logo text */
+.logo-text {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Sticky button shadow */
+.sticky-btn-shadow {
+  box-shadow: 0 -4px 20px rgba(119, 100, 146, 0.15);
+}
+
+/* Smooth tap highlight removal */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
